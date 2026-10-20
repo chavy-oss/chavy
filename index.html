@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chavy C. Torotoro - Resume</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            max-width: 900px;
+            background: var(--card-bg);
+            margin: 0 auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: #38bdf8;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 6px;
+        }
+
+        .contact-list, .lang-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: #cbd5e1;
+            word-break: break-all;
+        }
+
+        .contact-list i {
+            color: var(--primary);
+            margin-top: 4px;
+        }
+
+        .lang-list li {
+            display: flex;
+            justify-content: space-between;
+            color: #cbd5e1;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            border: 1px solid #334155;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Header Layout: Photo beside Name */
+        .header-profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 25px;
+        }
+
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            flex-shrink: 0;
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .header-title p {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .about-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .timeline-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            background: #eff6ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .timeline-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            margin-bottom: 8px;
+        }
+
+        .bullet-list {
+            list-style-type: disc;
+            padding-left: 18px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .references-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 500px) {
+            .references-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .reference-card {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .reference-card h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .reference-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <!-- Sidebar Area -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Contact</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Purok 2, San Roque, Tubajon, Dinagat Islands, Philippines</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <span>09317509987</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>chavytorotoro05@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Skills</h3>
+                <div class="skills-tags">
+                    <span class="skill-tag">Video Editing</span>
+                    <span class="skill-tag">AI Video Editing</span>
+                    <span class="skill-tag">Product Videos</span>
+                    <span class="skill-tag">Promotional Ads</span>
+                    <span class="skill-tag">Hook & Intro Creation</span>
+                    <span class="skill-tag">Visual Techniques</span>
+                    <span class="skill-tag">Problem Solving</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Languages</h3>
+                <ul class="lang-list">
+                    <li><span>English</span> <span>Fluent</span></li>
+                    <li><span>Filipino</span> <span>Native</span></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header section with photo side-by-side with name -->
+            <header class="header-profile">
+                <!-- Replace 'profile.jpg' with your photo file path in your GitHub repository -->
+                <img src="profile.jpg" alt="Chavy C. Torotoro" class="profile-img">
+                <div class="header-title">
+                    <h1>CHAVY C. TOROTORO</h1>
+                    <p>Electronics Engineering Student</p>
+                </div>
+            </header>
+
+            <!-- About Me -->
+            <section>
+                <h2 class="section-title"><i class="fa-solid fa-user"></i> About Me</h2>
+                <p class="about-text">
+                    Electronics Engineering student from Caraga State University with experience in video editing and AI video editing[cite: 3]. Passionate about transforming ideas into compelling visual content that captures attention and communicates a clear message[cite: 3].
+                </p>
+            </section>
+
+            <!-- Education -->
+            <section>
+                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Bachelor of Science in Electronics Engineering</h3>
+                        <span class="timeline-date">2025 - Present</span>
+                    </div>
+                    <p class="timeline-subtitle">Caraga State University - Main Campus</p>
+                    <p class="about-text" style="font-size: 0.9rem;">Currently studying[cite: 3].</p>
+                </div>
+                <div class="timeline-item" style="margin-top: 15px;">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Science, Technology, Engineering, and Mathematics (STEM)</h3>
+                        <span class="timeline-date">2023 - 2025</span>
+                    </div>
+                    <p class="timeline-subtitle">Loreto National High School (A Stand Alone Senior High School)</p>
+                    <p class="about-text" style="font-size: 0.9rem;">Graduated: April 2025[cite: 3]</p>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section>
+                <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work Experience</h2>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Part-Time Video Editor / AI Video Editor</h3>
+                        <span class="timeline-date">2026</span>
+                    </div>
+                    <ul class="bullet-list">
+                        <li>Passionate about transforming ideas into compelling visual content that captures attention and communicates a clear message[cite: 3].</li>
+                        <li>AI Video Editor skilled in producing engaging short-form videos for clients[cite: 3].</li>
+                        <li>Product Video and Promotional Ad Creation[cite: 3].</li>
+                        <li>Engaging Hook and Intro Creation[cite: 3].</li>
+                        <li>Attention-Grabbing Visual Techniques & Creative Problem-Solving[cite: 3].</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Character References -->
+            <section>
+                <h2 class="section-title"><i class="fa-solid fa-address-book"></i> Character References</h2>
+                <div class="references-grid">
+                    <div class="reference-card">
+                        <h4>Jan Philip Balansag</h4>
+                        <p>Student, Caraga State University</p>
+                        <p><i class="fa-solid fa-envelope"></i> janphilipb28@gmail.com</p>
+                    </div>
+                    <div class="reference-card">
+                        <h4>Jomer N. Sandigan</h4>
+                        <p>Student, Caraga State University</p>
+                        <p><i class="fa-solid fa-envelope"></i> jomieeesandigan@gmail.com</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
